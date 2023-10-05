@@ -1,0 +1,11 @@
+ **Este es el proceso de configuracion para instalar mysql
+   sudo apt update
+   sudo apt upgrade
+**Este es eñ comando para instalar el mysql
+   sudo apt install mysql-server
+**Este comando nos ayuda a configurar y colocar la contraseña
+   sudo su
+**con estos comandos configuramos y instalamos las contraseñas de mas de crear usuarios. 
+   sudo mysql_secure_installation
+   sudo mysql -u root
+   sudo mysql -u root -p
