@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <%- include('../includes/head') %>
+    <link rel="stylesheet" href="public/css/home.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11" />
+
+</head>
+
+<body>
+  <%- include('../includes/header') %>
+
+    <main class="content-wrapper mt-5" style="margin-top: 80px !important">
+      <div class="container" style="width: 95% !important">
+        <div class="row justify-content-md-center mb-5">
+          <div class="col-md-12 mt-5">
+            <h2 class="text-center">
+              Enviar formulario HTML a Mysql con Nodejs
+              <hr />
+            </h2>
+          </div>
+
+          <div class="col-md-6 mt-5 text-center cardForm">
+            <form id="contact-form" action="/procesar-formulario" method="POST" onsubmit="return validarFormulario()">
+              <div class="form-group mb-3">
+                <label for="nombre_alumno">Nombre del Estudiante</label>
+                <input type="text" name="nombre_alumno" class="form-control" />
+              </div>
+              <div class="form-group mb-3">
+                <label for="email_alumno">Correo del Estudiante</label>
+                <input type="text" name="email_alumno" class="form-control" />
+              </div>
+              <div class="form-group mb-4">
+                <label for="curso_alumno">Curso</label>
+                <select name="curso_alumno" class="form-control">
+                  <option value="Python">Python</option>
+                  <option value="NodeJS">NodeJS</option>
+                  <option value="PHP">PHP</option>
+                  <option value="JavaScript">JavaScript</option>
+                </select>
+              </div>
+              <div class="form-group mb-3">
+                <label for="dni_alumno">DNI del Estudiante</label>
+                <input type="text" name="dni_alumno" class="form-control" />
+              </div>
+              <div class="form-group mb-3">
+                <label for="celular_alumno">Celular del Estudiante</label>
+                <input type="text" name="celular_alumno" class="form-control" />
+              </div>
+              <div class="form-group mb-3">
+                <label for="direccion_alumno">Dirección del Estudiante</label>
+                <input type="text" name="direccion_alumno" class="form-control" />
+              </div>
+              <button type="submit" class="btn btn-info btn-lg btn-block">
+                Enviar formulario
+              </button>
+            </form>
+
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <%- include('../includes/scripts') %>
+
+
+      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+      <script>
+        document.addEventListener('DOMContentLoaded', function () {
+          const formulario = document.getElementById('contact-form');
+          formulario.addEventListener('submit', function (event) {
+            event.preventDefault();
+            if (validarFormulario()) {
+              Swal.fire({
+                title: '¡Enviado!',
+                text: 'Tu mensaje ha sido enviado correctamente.',
+                icon: 'success',
+                confirmButtonText: 'OK',
+                customClass: {
+                  confirmButton: 'btn-success'
+                }
+              }).then((result) => {
+                if (result.isConfirmed) {
+                  formulario.submit();
+                }
+              });
+            }
+          });
+
+          function validarFormulario() {
+            const nombre = document.getElementById('nombre_alumno').value;
+            const email = document.getElementById('correo_electronico').value;
+            const dni = document.getElementById('dni_alumno').value;
+            const celular = document.getElementById('celular_alumno').value;
+            const direccion = document.getElementById('direccion_alumno').value;
+
+            if (!nombre || !email || !dni || !celular || !direccion) {
+              Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: 'Todos los campos son obligatorios.',
+              });
+              return false;
+            }
+
+            // Validación de DNI
+            const dniRegex = /^\d{8}$/;
+            if (!dniRegex.test(dni)) {
+              Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: 'El DNI debe tener 8 dígitos.',
+              });
+              return false;
+            }
+
+            // Validación de número de celular
+            const celularRegex = /^\d{9}$/;
+            if (!celularRegex.test(celular)) {
+              Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: 'El número de celular debe tener 9 dígitos.',
+              });
+              return false;
+            }
+
+            // Agrega las demás validaciones aquí...
+
+            return true;
+          }
+        });
+      </script>
+</body>
+
+</html>
