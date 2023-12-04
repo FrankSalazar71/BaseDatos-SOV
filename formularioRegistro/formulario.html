@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Formulario de registro</title>
+  <link rel="stylesheet" href="formu.css">
+
+</head>
+<body>
+
+  <div class="fondo">
+    <img src="2.jpg" alt="Imagen de fondo">
+  </div>
+
+  <div class="formulario">
+    <h1>¡BIENVENIDOS!</h1>
+
+    <div class="form-group">
+      <label for="especialidad">Especialidad</label>
+      <select name="especialidad" id="especialidad" class="form-control">
+        <option value="">Seleccione una opción</option>
+        <option value="análisis de sistemas">Análisis de sistemas</option>
+        <option value="producción agraria">Producción agraria</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="nombre">Nombre completo</label>
+      <input type="text" class="form-control" id="nombre" name="nombre" pattern="[A-Za-z ]+" required>
+      <!-- Only allows letters and spaces -->
+    </div>
+
+   
+
+    <div class="form-group">
+      <label for="dni">Numero de DNI</label>
+      <input type="text" class="form-control" id="dni" name="dni" pattern="[0-9]{9}" required>
+      <!-- Only allows 9 digits -->
+    </div>
+
+    <div class="form-group">
+      <label for="edad">Fecha de Nacimiento</label>
+      <input type="date" class="form-control" id="edad" name="edad" required>
+      <!-- Only allows a valid date -->
+    </div>
+
+    <div class="form-group">
+      <label for="correo_electronico">Correo electrónico</label>
+      <input type="email" class="form-control" id="correo_electronico" name="correo_electronico" required>
+      <!-- Requires a valid email format -->
+    </div>
+
+    <div class="form-group">
+      <label for="contraseña">Contraseña</label>
+      <input type="password" class="form-control" id="contraseña" name="contraseña" required>
+      <!-- No specific restrictions for the password -->
+    </div>
+
+    <div class="form-group">
+      <a href="#">¿Olvidó su contraseña?</a>
+    </div>
+
+    <div class="form-group">
+      <input type="checkbox" id="acepto" name="acepto" required>
+      <label for="acepto">Acepto los términos y condiciones</label>
+    </div>
+
+    <button type="submit" class="btn btn-primary" onclick="location.reload();">REGISTRARME</button>
+
+
+    
+  </div>
+
+  
+
+
+</body>
+</html>
