@@ -26,6 +26,18 @@ conexion.connect(function (error) {
     console.log("Servidor funcionando en puerto: " + puerto);
   });
 
+  app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+
+//definimos las carpetas
+app.use("/css", express.static(path.join(__dirname, 'css')));
+app.use("/img", express.static(path.join(__dirname, 'img')));
+
+app.get("/",function(req,res){
+  var filepath = path.join(__dirname,"formulario.html")
+  res.sendFile(filepath) ;
+});
+
   //Actualizacion de los parametros de form a mysql
 app.post("/user-form", function(req, res) {
     //Hemos usado el let solo para id y el datos.### para name
