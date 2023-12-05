@@ -3,18 +3,20 @@
 <head>
   <meta charset="UTF-8">
   <title>Formulario de registro</title>
-  <link rel="stylesheet" href="formu.css">
+  <link rel="stylesheet" href="./css/formu.css">
 
 </head>
 <body>
 
   <div class="fondo">
-    <img src="2.jpg" alt="Imagen de fondo">
+    <img src="./img/2.jpg" alt="Imagen de fondo">
   </div>
 
   <div class="formulario">
     <h1>¡BIENVENIDOS!</h1>
 
+
+    <form action="/user-form" method="post" class="form">
     <div class="form-group">
       <label for="especialidad">Especialidad</label>
       <select name="especialidad" id="especialidad" class="form-control">
@@ -65,8 +67,9 @@
       <label for="acepto">Acepto los términos y condiciones</label>
     </div>
 
-    <button type="submit" class="btn btn-primary" onclick="location.reload();">REGISTRARME</button>
-
+    <input type="submit" id="btnCrear"  value="ENVIAR">
+    
+  </form>
 
     
   </div>
